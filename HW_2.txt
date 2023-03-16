@@ -1,0 +1,50 @@
+ 1 уровень сложности: В рамках БД "песочница (интернет-магазин)" напишите следующие запросы:
+
+(1) вывести название товаров из 2 и 5 категории с ценой от 5 до 25 (EURO), где в названии есть слово 'syrup'
+
+
+(2) добавьте произвольный товар в таблицу Products
+
+
+(3) у клиента с ID 1 измените адрес на произвольный
+
+
+(4) у всех клиентов не из Гермарнии и не из США очистите адрес и контактное имя
+
+
+(5) у всех поставщиков (Suppliers) очистите номер телефона
+
+
+(6) удалите всех поставщиков не из 'USA'
+
+
+---------------------------------------------------------------------------------------------------------------------------------------
+1.
+SELECT ProductName
+FROM Products
+WHERE Price BETWEEN 5 AND 25
+AND CategoryID IN (2, 5)
+AND ProductName LIKE '%syrup%'
+
+
+2.
+INSERT INTO Products
+VALUES (79, "NatalyMac", 77, 7, "1 pak", 77.9)
+
+3.
+UPDATE Customers
+SET Address="Emsstr 24"
+Where CustomerID=1
+
+4.
+UPDATE Customers
+SET Address=" ",ContactName=" "
+Where Country is not "Germany" and is not "USA"
+
+5.
+UPDATE Suppliers
+SET Phone=""
+
+6.
+DELETE FROM Suppliers
+Where Country is not "USA"
